@@ -58,6 +58,9 @@ public class Application implements Runnable {
         long processStartNanos = System.nanoTime();
 
         for (String line : reader.readLines(inputPath)) {
+            if (parser.isHeader(line)) {
+                continue;
+            }
             if (parser.parseAndAggregate(line, aggregator)) {
                 processed++;
             } else {

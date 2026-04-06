@@ -5,8 +5,16 @@ import com.martin.adanalytics.aggregator.CampaignAggregator;
 public class CsvRowParser {
     private static final String HEADER_PREFIX = "campaign_id";
 
+    public boolean isHeader(String line) {
+        if (line == null || line.isEmpty()) {
+            return false;
+        }
+        String normalized = line.charAt(0) == '\uFEFF' ? line.substring(1) : line;
+        return normalized.startsWith(HEADER_PREFIX);
+    }
+
     public boolean parseAndAggregate(String line, CampaignAggregator aggregator) {
-        if (line.startsWith(HEADER_PREFIX)) {
+        if (isHeader(line)) {
             return false;
         }
 
