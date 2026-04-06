@@ -72,6 +72,8 @@ The app writes 2 files to the `--output` directory:
 - `top10_ctr.csv`
 - `top10_cpa.csv`
 
+> **Notice:** The generated output files `top10_cpa.csv` and `top10_str.csv` are located in the `output` folder.
+
 Columns:
 ```text
 campaign_id,total_impressions,total_clicks,total_spend,total_conversions,CTR,CPA
