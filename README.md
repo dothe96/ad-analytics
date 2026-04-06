@@ -21,7 +21,7 @@ CLI tool (Java 21) to process large advertising CSV files, aggregate by `campaig
 - Docker engine
 
 ```bash
-docker build -t ad-analytics:latest
+docker build -t ad-analytics:latest .
 ```
 
 ### Run with Docker
