@@ -56,6 +56,7 @@ public final class BenchmarkReporter {
         System.out.println("Skip ratio: " + formatDouble(skipPct) + "%");
         System.out.println("Peak heap used: " + formatBytes(memorySampler.getPeakHeapBytes()));
         System.out.println("Peak total memory (heap+non-heap): " + formatBytes(memorySampler.getPeakTotalBytes()));
+        System.out.println("Memory use: " + formatBytes(currentUsedMemoryBytes()));
         System.out.println("GC collections (delta): " + gcCountDelta);
         System.out.println("GC time (delta): " + gcTimeMsDelta + " ms");
         System.out.println("Done in " + formatMillis(totalNanos));
@@ -87,6 +88,11 @@ public final class BenchmarkReporter {
             return formatDouble(mb) + " MB";
         }
         return formatDouble(kb) + " KB";
+    }
+
+    private static long currentUsedMemoryBytes() {
+        Runtime runtime = Runtime.getRuntime();
+        return runtime.totalMemory() - runtime.freeMemory();
     }
 
     private static final class BenchmarkSnapshot {
